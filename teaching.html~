@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Adam Jardine">
+  <title>Adam Jardine - Teaching</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Adam Jardine">
+  <meta name="keywords" content="Adam Jardine,linguistics,Rutgers,phonology,computational linguistics">
+  <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div style="margin-left:12%">
+
+<h1 id="adam-jardine">Adam Jardine</h1>
+
+<p class="contact">
+<b>Department of Linguistics, Rutgers University</b><br>
+Rm 205A, 18 Seminary Pl, New Brunswick, NJ<br>
+<a href="mailto:adam.jardine@rutgers.edu">adam.jardine@rutgers.edu</a></p>
+</div>
+
+<ul class="nav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="papers.html">Papers</a></li>
+  <li><a href="presentations.html">Presentations</a></li>
+  <li><a href="teaching.html", class="active">Teaching</a></li>
+  <li><a href="https://adamjardine.github.io/rucll">Lab</a></li>
+  <li><a href="files/cv.pdf">CV (pdf)</a></li>
+</ul>
+
+<div style="margin-left:20%;padding:1px 16px;">
+
+<h3>Teaching</h3>
+
+
+
+<!--<h4>Current (Spring 2018)</h4>
+<ul>
+  <li>201H: Introduction to Linguistic Theory (Honors)
+  <li>521: Phonology II</li>
+</ul>-->
+
+<h4>Past courses (Rutgers)</h4>
+<ul>
+  <li>201: Introduction to Linguistic Theory (Fall 2017, Spring 2018)</li>
+  <li>521: Phonology II (Spring 2017, Spring 2018)</li>
+  <li>522: Phonology III (Fall 2016)</li>
+  <li>690: Qualifying Paper Workshop (Fall 2016, Fall 2017)</li>
+</ul>
+
+<h4>Past courses (U. of Delaware)</h4>
+<ul>
+  <li>LING101: Introduction to linguistics (Instructor) (Spring 2013)</li>
+  <li>LING253: Laboratory Phonetics (Grading TA) (Fall 2012)</li>
+  <li>LING101: Introduction to linguistics (Discussion section leader) (Fall 2011, Spring 2012)</li>
+</ul>
+
+<h4>Other teaching</h4>
+<ul>
+  <li>2009-2011: English Teacher, Kaica Computer &amp; Language School; Setagaya, Tokyo, Japan.</li>
+  <li>2008: Guest Lecturer, Toyama College of Foreign Languages; Toyama City, Toyama, Japan.</li>
+  <li>2006-2009: Assistant Language Teacher, Interac, Co., Ltd.; Toyama City, Toyama, Japan.</li>
+</ul>
+
+</div>
+
+<br/>
+<p class="footer">
+Last updated: May 8 2018<br>
+</p>
+</body>
+</html>

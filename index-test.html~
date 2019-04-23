@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Adam Jardine">
+  <title>Adam Jardine</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Adam Jardine">
+  <meta name="keywords" content="Adam Jardine,linguistics,Rutgers,phonology,computational linguistics">
+  <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div style="margin-left:12%">
+
+<h1 id="adam-jardine">Adam Jardine</h1>
+
+<p class="contact">
+<b>Department of Linguistics, Rutgers University</b><br/>
+Rm 303, 18 Seminary Pl, New Brunswick, NJ</p>
+</div>
+
+<ul class="nav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="papers.html">Papers</a></li>
+  <li><a href="index.html">Presentations</a></li>
+  <li><a href="index.html">Teaching</a></li>
+  <li><a href="files/cv.pdf">CV (pdf)</a></li>
+</ul>
+
+<div style="margin-left:20%;padding:1px 16px;">
+
+<p>I'm an Assistant Professor of phonology at the Rutgers <a href="http://ling.rutgers.edu">Department of Linguistics</a>. I'm interested in mathematical and computational approaches to phonology, phonological representation, and phonological learning.</p>
+
+<p>I'm new here and so this website is under construction.</p>
+
+<p>For the basics, here are my <a href="files/cv.pdf">CV</a> and <a href="files/jardine2016dissertation.pdf">dissertation</a>. <a href="http://udel.edu/~ajardine">My old website</a> at the University of Delaware has some more information.</p>
+
+<p>You can get in touch with me at <a href="mailto:adam.jardine@rutgers.edu">adam.jardine@rutgers.edu</a>.</p>
+
+</div>
+
+<br/>
+<p class="footer">
+Last updated: Aug 18 2016<br>
+</p>
+</body>
+</html>
