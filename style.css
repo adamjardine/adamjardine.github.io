@@ -117,3 +117,7 @@ td {
     font-size: 11pt;
     line-height: 110%;
 }
+
+img {
+    border: 1px solid #202020;
+}
