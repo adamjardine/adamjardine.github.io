@@ -53,9 +53,10 @@ Rm 205A, 18 Seminary Pl, New Brunswick, NJ<br>
 </ul>
 
 <div style="margin-left:18%;margin-right:10%;padding:1px 16px;">
-    <p> <img id="pic" src="files/me.jpg" alt="Mug shot" style="float:right;height:200px;margin:10px 50px 10px 20px;border-radius:10px">
+    <p> <img id="pic" onmouseover="toDad(this)" onmouseout="fromDad(this)" src="files/me.png" alt="Mug shot" style="float:right;height:200px;margin:10px 50px 10px 20px;border-radius:10px">
     <!-- <p> <img src="files/me.jpg" alt="Mug shot" style="float:right;height:170px;margin:10px 20px"> -->
-        I'm an Assistant Professor at the Rutgers <a href="https://ling.rutgers.edu">Department of Linguistics</a>. I'm primarily interested in computational and mathematical approaches to phonological theory.</p>
+        I'm an Associate Professor at the Rutgers <a href="https://ling.rutgers.edu">Department of Linguistics</a>.
+        My research uses computational and mathematical approaches to address fundamental questions in phonological theory.</p>
 
     <h4>Research interests:</h4>
     <table>
@@ -86,51 +87,57 @@ Rm 205A, 18 Seminary Pl, New Brunswick, NJ<br>
 
     <h4>Recent activities:</h4>
     <ul>
-        <li>Deen Mamadou and I presented at <a href="https://sites.rutgers.edu/nels-52/program/">NELS 52 @ Rutgers!</a></li>
+        <li>I have been promoted to Associate Professor with tenure at Rutgers!</li>
+        <li>
+            Deen Mamadou and I presented at <a href="https://sites.rutgers.edu/nels-52/program/">NELS 52 @ Rutgers!</a>.
+            Check out the proceedings paper <a href="files/mamadoujardine2022.pdf">here</a>.
+        </li>
         <li>Jane Chandlee and I have <a href="https://muse.jhu.edu/article/806346"> a paper out in <i>Language</i></a> on applying recursive program schemes to phonological analysis.</li> 
         <li>I appeared on <a href="https://shiinnovationheroes.podbean.com/e/the-abcs-of-teaching-ai-to-talk/">an episode of the Innovation Heroes podcast</a> on artificial intelligence and language learning.</li>
         <li>I was on the organizing committee for the <a href="https://icgi2020.lis-lab.fr/calls/">2020/2021 International Conference on Grammatical Inference</a>, and presented a paper there with Wenyue Hua on learning underlying representations. <a href="https://proceedings.mlr.press/v153/">Check out the proceedings!</a></li>
-        <li>I gave a talk at <a href="https://linguistics.princeton.edu/pphf/pphf-2021/pphf-2021-schedule/">the Princeton Phonology Forum</a>; <a href="files/jardine-tonecomputation-princeton.pdf">here are the slides</a>.</li>
-        <li><a href="javascript:" onclick="changeImg('files/adamthedad.jpg');">Being a dad (!!!)</a>. 
+        <!-- <li><a href="javascript:" onclick="changeImg('files/adamthedad.jpg');">Being a dad (!!!)</a>.  -->
 	  </ul>
 
-    <h4>Student collaborators:</h4>
-    <table>
-        <tr>
-            <td>
-	              <ul>
-	                  <li><a href="https://www.eileenrblum.com/">Eileen Blum</a></li>
-	                  <li><a href="https://nate-koser.github.io/">Nate Koser</a></li>
-                    <li><a href="https://sites.google.com/view/shioriikawa/">Shiori Ikawa</a>
-	                  <li><a href="https://dinemamadou.wixsite.com/dinemamadou">Tadjoudeen Mamadou Y.</a></li>
-	              </ul>
-            </td>
-            <td>
-	              <ul>
-                    <li><a href="http://hutengdai.com/">Huteng Dai</a></li>
-                    <li><a href="https://www.cs.rutgers.edu/people/graduate-students/details/wenyue-hua">Wenyue Hua</a> (now at Rutgers CS)</li>
-	                  <li><a href="https://coakden.github.io/">Chris Oakden</a> (Now at Berkeley Global)</li>
-	              </ul>
-            </td>           
-        </tr>
-    </table>
+    <h4>PhD Advisees</h4>
+    <ul>
+        <li><a href="http://hutengdai.com/">Huteng Dai</a>. 2024 (expected).</li>
+	      <li><a href="https://nate-koser.github.io/">Nate Koser</a>. 2022 (expected).</li>
+	      <li><a href="https://www.eileenrblum.com/">Eileen Blum</a>. 2022 (expected).</li>
+        <li>Chris Oakden. 2020. <i>Modeling phonological interactions using recursive schemes</i>. [<a href="files/oakden2020dissertation.pdf">pdf</a>]
+        </li>
+        <li>Luca Iacoponi. 2018. <i>Phonological agreement by headed feature correspondence</i>. [<a href="files/iacoponi2018dissertation.pdf">pdf</a>] (Co-advised with <a href="https://www.pauldelacy.net/webpage/">Paul de Lacy</a>.)</li>
+    </ul>
 
-    <h4>Teaching for spring 2022:</h4>
+    <h4>Teaching for fall 2022:</h4>
 	  <ul>
-        <li>615:497 Advanced Undergraduate Seminar (Tue, Fri 8:30-9:50am, Scot Hall, Rm 114)</li>
-        <li>615:315 Phonology  (Mon, Thu 12:10-1:30pm, Frelinghuysen Hall, Rm A1)</li>
+        <li>615:315 Phonology  (Tue, Fri 8:30-9:50am, Scott Hall, Rm 114)</li>
+        <li>615:690 Phonology  (Wed 12:10-3:10pm, 18 Seminary Pl, Rm 108)</li>
 	  </ul>
 
-    <h4>Office hours for spring 2022:</h4>
-    <p>Mondays, Tuesdays 2-3pm (on Zoom)</p>
+    <h4>Office hours for fall 2022:</h4>
+    <p>TBA</p>
+
+    <h4><u>On sabbatical spring 2023</u></h4>
 
 
 </div>
 
 <br/>
 <p class="footer">
-    Last updated: Jan 6, 2022<br>
+    <script language="Javascript">
+     document.write("Last updated: " + document.lastModified +"");
+    </script>
 </p>
+
+<script>
+ function toDad(x) {
+     x.src = "files/adamthedad.jpg";
+ }
+
+ function fromDad(x) {
+     x.src = "files/me.png";
+ }
+</script>
 
 </body>
 </html>
