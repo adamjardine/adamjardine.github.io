@@ -245,7 +245,7 @@ So now we have a way to distinguish strings in \(a\)s and \(b\)s, with one relat
 In fact, for any string signature, it's most straightforward to have a unary relation for each symbol in the alphabet. 
 Thus, in this particular case, for any string model we'll need the unary relations \(R_a,R_b,R_c\) and the binary relation \(R_&lt;\). </p>
 <p>This set of relations \(R_1,R_2...,R_n\) is called a <strong>signature</strong>. 
-We'll use calligraphic letters, e.g. \(\mathcal{S}\), to indicate signatures.</p>
+We'll use calligraphic capital letters, e.g. \(\mathcal{S}\), to indicate signatures.</p>
 <p>The signature we will use to represent strings in an arbitrary finite alphabet \(\Sigma=\{\sigma_1,\sigma_2,...,\sigma_n\}\) is as follows.</p>
 <p>\[\mathcal{S}^&lt;=\{R_{\sigma_1},R_{\sigma_2},...,R_{\sigma_n},R_&lt;\}\]</p>
 <p>To recap, a (finite) <strong>model</strong> is a mathematical object that lets us describe other objects. 
@@ -253,34 +253,51 @@ Formally, it is a tuple consisting of a set of elements or <strong>domain</stron
 <p>\[\langle D; R_1, R_2, ..., R_n\rangle\]</p>
 <p>The name of a particular set of relations that we use to model some set of structures is a <strong>signature</strong>. </p>
 <h2 id="first-order-logic"><a class="header" href="#first-order-logic">First order logic</a></h2>
-<h3 id="syntax"><a class="header" href="#syntax">Syntax</a></h3>
 <p>Given a signature, we can define a FO logic over that signature. 
-To build such a logic and define how it can be interpreted over models in the signature, we need to define the <strong>syntax</strong> and <strong>semantics</strong> of FO.</p>
-<p>Statements in FO choose from a set of <strong>variables</strong> \(\mathcal{X}=\{x,y,z,...,x_1,x_2,...\}\). </p>
+To build such a logic and define how it can be interpreted over models in the signature, we need to define the <strong>syntax</strong> and <strong>semantics</strong> of FO.
+Defining this precisely tells us not only the range of grammars we can write, but also how these grammars compute languages.</p>
+<h3 id="syntax"><a class="header" href="#syntax">Syntax</a></h3>
+<p>The syntax defines the range of statements we can write.</p>
+<p>First, statements in FO choose from a set of <strong>variables</strong> \(\mathcal{X}=\{x,y,z,...,x_1,x_2,...\}\). </p>
 <p>Additionally, for each relation in the signature, we have a set of <strong>atomic formulas</strong> that correspond to the relations in our model (plus equality).</p>
 <p><strong>Definition.</strong> (Atomic formulas)</p>
-<ul>
-<li>For any two variables \(x\) and \(y\), \(x=y\) is an atomic formula</li>
-<li>For any two variables \(x\) and \(y\), \(x&lt;y\) is an atomic formula</li>
-<li>For any variable \(x\) and any symbol \(\sigma\in\Sigma\), \(\sigma(x)\) is an atomic formula</li>
-</ul>
-<p>The set of <strong>well-formed formulas (WFFs)</strong> in FO is then built out of atomic formulas connected by the logical connectives \(\neg, \land, \lor, \rightarrow\) and the quantifiers \(\forall, \exists\).</p>
+<ol>
+<li>For any two variables \(x\) and \(y\), \(x=y\) is an atomic formula. </li>
+<li>For any two variables \(x\) and \(y\), \(x&lt;y\) is an atomic formula.</li>
+<li>For any variable \(x\) and any unary relation \(R_\sigma\in\mathcal{S}\), \(\sigma(x)\) is an atomic formula.</li>
+</ol>
+<p>Atomic formulas, as their name suggests, define the basic properties in the model to which the logic refers. 
+Given our running example for \(\Sigma={a,b,c}\), some atomic formulas are \(a(x)\), \(b(z)\), \(x=y\), \(y&lt;z\), etc.</p>
+<p>The set of <strong>well-formed formulas (WFFs)</strong> in FO is then built out of atomic formulas connected by the logical connectives 
+\(\neg\) and \(\lor\) and the quantifier \(\forall\). </p>
+<!--\\(\neg, \land, \lor, \rightarrow\\) and the quantifiers \\(\forall, \exists\\).-->
 <p><strong>Definition.</strong> (Well-formed formulas) </p>
-<ul>
+<ol>
 <li>If \(\varphi\) is an atomic formula, then \(\varphi\) is a WFF </li>
-<li>If \(\varphi\) is a WFF, then \((\neg\varphi)\) is a WFF</li>
-<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\land\psi)\) are WFFs</li>
-<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\lor\psi)\) are WFFs</li>
-<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\rightarrow\psi)\) are WFFs</li>
-<li>If \(\varphi\) is a WFF for which \(x\) is a free variable, then \((\forall x)[\varphi]\) is a WFF</li>
-<li>If \(\varphi\) is a WFF for which \(x\) is a free variable, then \((\exists x)[\varphi]\) is a WFF</li>
-</ul>
-<p>A <strong>free variable</strong> in an formula \(\varphi\) is a variable \(x\) such that \(...x...\) appears in \(\varphi\) without being preceded by \((\forall x)\) or \((\exists x)\) (i.e., it's not <strong>bound</strong> by a quantifier).
-A WFF with no free variables is called a <strong>sentence</strong>.</p>
-<p><strong>Note:</strong> The parentheses in the above definition make the composition of a WFF explicit, but they are often removed for readability. 
-Technically, the first example above is abbreviated somewhat. </p>
+<li>If \(\varphi\) is a WFF, then \((\neg\varphi)\) is a WFF <!--* If \\(\varphi\\) and \\(\psi\\) are WFFs, then \\((\varphi\land\psi)\\) are WFFs--></li>
+<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\lor\psi)\) are WFFs <!--* If \\(\varphi\\) and \\(\psi\\) are WFFs, then \\((\varphi\rightarrow\psi)\\) are WFFs--></li>
+<li>If \(\varphi\) is a WFF for which \(x\) is a free variable, then \((\forall x)[\varphi]\) is a WFF <!--* If \\(\varphi\\) is a WFF for which \\(x\\) is a free variable, then \\((\exists x)[\varphi]\\) is a WFF--></li>
+</ol>
+<p>A <strong>free variable</strong> in an formula \(\varphi\) is a variable \(x\) such that \(...x...\) appears in \(\varphi\) without being preceded by \((\forall x)\) or \((\exists x)\) (i.e., it's not <strong>bound</strong> by a quantifier).</p>
+<p>Note that this definition is <em>recursive</em>: the definition of WFF itself refers to WFFs. 
+Thus, we can write an infinite number of WFFs by recursively applying the rules above.
+For example, \((\neg a(x))\) is built by starting with the atomic formula \(a(x)\) and plugging that in as \(\phi\) for rule (2.) in the definition of WFFs. </p>
 <blockquote>
-<p>To convince yourself how this works, apply the above definition to construct \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\). </p>
+<p>Take a moment to convince yourself of how this works by deriving the WFFs \(((\neg a(x))\lor b(x))\) and \((\forall x)[(b(x)\lor(\neg(c(x))))\).</p>
+</blockquote>
+<p><strong>Some notational sugar.</strong>
+The parentheses in the above definition make the composition of a WFF explicit, but they are often removed for readability when there is no danger of ambiguity.
+So, for example, \(((\neg a(x))\lor b(x))\) can be rewritten as \(\neg a(x)\lor b(x)\). </p>
+<p>Finally, the other common logical connectives \(\rightarrow\) and \(\land\) and the quantifier \(\exists\) can be derived from the syntax we've already defined. 
+Namely, </p>
+<ul>
+<li>\(\varphi\rightarrow\psi := \neg\varphi\lor\psi\)</li>
+<li>\(\varphi\land\psi := \neg(\neg\varphi\lor\neg\psi)\)</li>
+<li>\((\exists x)[\varphi] := \neg(\forall x)[\neg\varphi]\)</li>
+</ul>
+<p>...where the notation '\(:=\)' means something like 'can be re-written as'. </p>
+<blockquote>
+<p>Take a minute apply the above to construct our original example of \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\). </p>
 </blockquote>
 <h3 id="semantics"><a class="header" href="#semantics">Semantics</a></h3>
 <p>So far our FO WFFs are just strings of meaningless symbols. 
@@ -299,7 +316,8 @@ We can then say that the model <strong>satisfies</strong> a WFF \(\varphi\) give
 <p>g. \(M\models (\varphi\rightarrow\psi)[s]\) iff \(M\models(\neg\varphi\lor\psi)[s]\)</p>
 <p>h. \(M\models (\forall x)[\varphi][s]\) iff for all \(d\in D\), \(M\models \varphi[s; x\mapsto d]\)</p>
 <p>i. \(M\models (\exists x)[\varphi][s]\) iff for some \(d\in D\), \(M\models \varphi[s; x\mapsto d]\)</p>
-<p>If \(\varphi\) is a sentence, we can define satisfaction independent of such a function.</p>
+<p>A WFF with no free variables is called a <strong>sentence</strong>.
+If \(\varphi\) is a sentence, we can define satisfaction independent of such a function.</p>
 <p><strong>Definition</strong> (Satisfaction of a sentence). \(M\models\varphi\) if for all \(s:\mathcal{X}\rightarrow D\), \(M\models\varphi[s]\).</p>
 <h3 id="fo-sentences-as-grammars"><a class="header" href="#fo-sentences-as-grammars">FO sentences as grammars</a></h3>
 <p>Take a moment to convince yourself that \(L\) is exactly the set of strings that satisfies the sentence \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\).</p>
@@ -352,10 +370,10 @@ function copyToClipboard(text) {
 </script>
 <style></style>
 <div class="bib_div">
-<details data-key="filiot15" class=ref>
+<details data-key="mcnaughtonpapert71" class=ref>
 <summary class=citation>
-<a id="filiot15">[filiot15]</a> - Emmanual Filiot - <cite>Logic-Automata Connections for Transformations</cite>. - 2015. -
-<button onclick="copyToClipboard('\{\{ #cite filiot15 \}\}')">Copy citation_key</button>
+<a id="mcnaughtonpapert71">[mcnaughtonpapert71]</a> - Robert McNaughton, Seymour Papert - <cite>Counter-Free Automata</cite>. - 1971. -
+<button onclick="copyToClipboard('\{\{ #cite mcnaughtonpapert71 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract"><a class="header" href="#summaryabstract">Summary/Abstract</a></h1>
@@ -378,10 +396,10 @@ function copyToClipboard(text) {
 </div>
 <br/>
 <div class="bib_div">
-<details data-key="mcnaughtonpapert71" class=ref>
+<details data-key="heinz10" class=ref>
 <summary class=citation>
-<a id="mcnaughtonpapert71">[mcnaughtonpapert71]</a> - Robert McNaughton, Seymour Papert - <cite>Counter-Free Automata</cite>. - 1971. -
-<button onclick="copyToClipboard('\{\{ #cite mcnaughtonpapert71 \}\}')">Copy citation_key</button>
+<a id="heinz10">[heinz10]</a> - Jeffrey Heinz - <a href="http://jeffreyheinz.net/papers/Heinz-2010-LLP.pdf" target="_blank"><cite>Learning Long-Distance Phonotactics</cite></a>. - 2010. -
+<button onclick="copyToClipboard('\{\{ #cite heinz10 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-2"><a class="header" href="#summaryabstract-2">Summary/Abstract</a></h1>
@@ -391,39 +409,13 @@ function copyToClipboard(text) {
 </div>
 <br/>
 <div class="bib_div">
-<details data-key="rogerspullum11" class=ref>
+<details data-key="cook78" class=ref>
 <summary class=citation>
-<a id="rogerspullum11">[rogerspullum11]</a> - James Rogers, Geoffrey Pullum - <a href="https://www.cs.earlham.edu/~jrogers/mol10.pdf" target="_blank"><cite>Aural Pattern Recognition Experiments and The Subregular Hierarchy</cite></a>. - 2011. -
-<button onclick="copyToClipboard('\{\{ #cite rogerspullum11 \}\}')">Copy citation_key</button>
+<a id="cook78">[cook78]</a> - Eung-Do Cook - <cite>Palatalization and related rules in Sarcee</cite>. - 1978. -
+<button onclick="copyToClipboard('\{\{ #cite cook78 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-3"><a class="header" href="#summaryabstract-3">Summary/Abstract</a></h1>
-<div>N/A</div>
-</section>
-</details>
-</div>
-<br/>
-<div class="bib_div">
-<details data-key="engelfriethoogeboom01" class=ref>
-<summary class=citation>
-<a id="engelfriethoogeboom01">[engelfriethoogeboom01]</a> - Joost Engelfriet, Hendrik Jan Hoogeboom - <cite>MSO definable string transductions and two-way finite-state transducers</cite>. - 2001. -
-<button onclick="copyToClipboard('\{\{ #cite engelfriethoogeboom01 \}\}')">Copy citation_key</button>
-</summary>
-<section class=abstract>
-<h1 id="summaryabstract-4"><a class="header" href="#summaryabstract-4">Summary/Abstract</a></h1>
-<div>N/A</div>
-</section>
-</details>
-</div>
-<br/>
-<div class="bib_div">
-<details data-key="heinz10" class=ref>
-<summary class=citation>
-<a id="heinz10">[heinz10]</a> - Jeffrey Heinz - <a href="http://jeffreyheinz.net/papers/Heinz-2010-LLP.pdf" target="_blank"><cite>Learning Long-Distance Phonotactics</cite></a>. - 2010. -
-<button onclick="copyToClipboard('\{\{ #cite heinz10 \}\}')">Copy citation_key</button>
-</summary>
-<section class=abstract>
-<h1 id="summaryabstract-5"><a class="header" href="#summaryabstract-5">Summary/Abstract</a></h1>
 <div>N/A</div>
 </section>
 </details>
@@ -436,6 +428,32 @@ function copyToClipboard(text) {
 <button onclick="copyToClipboard('\{\{ #cite immerman80 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
+<h1 id="summaryabstract-4"><a class="header" href="#summaryabstract-4">Summary/Abstract</a></h1>
+<div>N/A</div>
+</section>
+</details>
+</div>
+<br/>
+<div class="bib_div">
+<details data-key="engelfriethoogeboom01" class=ref>
+<summary class=citation>
+<a id="engelfriethoogeboom01">[engelfriethoogeboom01]</a> - Joost Engelfriet, Hendrik Jan Hoogeboom - <cite>MSO definable string transductions and two-way finite-state transducers</cite>. - 2001. -
+<button onclick="copyToClipboard('\{\{ #cite engelfriethoogeboom01 \}\}')">Copy citation_key</button>
+</summary>
+<section class=abstract>
+<h1 id="summaryabstract-5"><a class="header" href="#summaryabstract-5">Summary/Abstract</a></h1>
+<div>N/A</div>
+</section>
+</details>
+</div>
+<br/>
+<div class="bib_div">
+<details data-key="rogerspullum11" class=ref>
+<summary class=citation>
+<a id="rogerspullum11">[rogerspullum11]</a> - James Rogers, Geoffrey Pullum - <a href="https://www.cs.earlham.edu/~jrogers/mol10.pdf" target="_blank"><cite>Aural Pattern Recognition Experiments and The Subregular Hierarchy</cite></a>. - 2011. -
+<button onclick="copyToClipboard('\{\{ #cite rogerspullum11 \}\}')">Copy citation_key</button>
+</summary>
+<section class=abstract>
 <h1 id="summaryabstract-6"><a class="header" href="#summaryabstract-6">Summary/Abstract</a></h1>
 <div>N/A</div>
 </section>
@@ -443,10 +461,10 @@ function copyToClipboard(text) {
 </div>
 <br/>
 <div class="bib_div">
-<details data-key="cook78" class=ref>
+<details data-key="filiot15" class=ref>
 <summary class=citation>
-<a id="cook78">[cook78]</a> - Eung-Do Cook - <cite>Palatalization and related rules in Sarcee</cite>. - 1978. -
-<button onclick="copyToClipboard('\{\{ #cite cook78 \}\}')">Copy citation_key</button>
+<a id="filiot15">[filiot15]</a> - Emmanual Filiot - <cite>Logic-Automata Connections for Transformations</cite>. - 2015. -
+<button onclick="copyToClipboard('\{\{ #cite filiot15 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-7"><a class="header" href="#summaryabstract-7">Summary/Abstract</a></h1>
