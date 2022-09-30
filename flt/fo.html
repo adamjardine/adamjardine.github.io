@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>First Order Logic - Formal Language Theory for Linguists</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="fo.html" class="active"><strong aria-hidden="true">1.</strong> First Order Logic</a></li><li class="chapter-item expanded affix "><a href="bibliography.html">References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Formal Language Theory for Linguists</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="first-order-logic-and-the-star-free-languages"><a class="header" href="#first-order-logic-and-the-star-free-languages">First-order Logic and the Star-Free Languages</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Last time we learned about the difference between computable and uncomputable languages. 
+This time, we're going to show how we can compute languages using <strong>first-order logic (FO)</strong>. </p>
+<p>Let's start with an actual natural language pattern.
+In Sarcee [<a href="bibliography.html#cook78">cook78</a>], [+anterior] sibilants can follow [-anterior] sibilants, but the reverse results in ungrammaticality. 
+(Data from [<a href="bibliography.html#cook78">cook78</a>], cited in [<a href="bibliography.html#heinz10">heinz10</a>]. Sibilants are highlighted in bold.)</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><strong>ʃ</strong>ít<strong>ʃ</strong>íd<strong>z</strong>àʔ</td><td>'my duck'</td></tr>
+<tr><td>nā<strong>ʃ</strong>ɣát<strong>ʃ</strong></td><td>'I killed them again'</td></tr>
+<tr><td>*<strong>s</strong>ít<strong>ʃ</strong>íd<strong>z</strong>àʔ</td><td></td></tr>
+</tbody></table>
+</div>
+<p>In the above example, the [-anterior] [z] follows the [+anterior] [ʃ], but it is impossible for the [+anterior] [ʃ] to follow [s]. </p>
+<p>Let's study this abstractly as a formal language.
+Let \(L\) be the formal language over \(\Sigma=\{a,b,c\}\) of all strings such that no \(a\) ever precedes a \(b\), anywhere in the string. I.e.,</p>
+<p>\[ L = \{accca,cccc,bcccb,bbccca,...\}\]</p>
+<p>and </p>
+<p>\[ \overline{L} = \{ab,acccb, ccaccccbc, aacccccccccb, .... \}  \]</p>
+<p>Thus, \(L\) above distills the precedence-based constraint in Sarcee, replacing [-anterior] consonants with \(a\) and [+anterior] consonants with \(b\) (and everything else with \(c\)). </p>
+<p>We can describe \(L\) with the below FO statement that forbids a \(b\) from following an \(a\). </p>
+<p>\[(\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\]</p>
+<p>For now, we'll forgo the formal details and interpret the statement informally. 
+The variables \(x\) and \(y\) here range over <em>positions</em> (or <em>indices</em>) in a string. 
+Thus, \(a(x)\) is interpreted to mean 'position \(x\) is occupied by the symbol \(a\).' </p>
+<p>The entire statement, then, reads as follows:</p>
+<blockquote>
+<p>For every position \(x\), if \(x\) is an \(a\), then there is no \(y\) such that \(y\) is a \(b\) and \(x\) precedes \(y\).</p>
+</blockquote>
+<p>This logical statement thus specifies a constraint on strings: for <em>every</em> \(a\) in a string, it cannot precede a \(b\). 
+As shown in detail below, this statement is either true or false for every string in \(\Sigma^*\), and there is a procedure for computing this. 
+Thus, this logical statement specifies exactly the strings in \(L\): the strings in \(L\) are those for which the statement is true, and the strings <em>not</em> in \(L\) are those for which it is false.</p>
+<p>The advantages of using logical statements as grammars are numerous. 
+Among them are the following.</p>
+<ul>
+<li>
+<p>We can draw from a rich literature connecting logic and computation [<a href="bibliography.html#buchi60">buchi60</a>],[<a href="bibliography.html#mcnaughtonpapert71">mcnaughtonpapert71</a>],[<a href="bibliography.html#immerman80">immerman80</a>],[<a href="bibliography.html#rogerspullum11">rogerspullum11</a>]. </p>
+<!--   * We can thus connect logical grammars to abstract characterizations like \\(k\\)-suffix substitution closure-->
+</li>
+<li>
+<p>We can study patterns over structures besides strings.</p>
+</li>
+<li>
+<p>They allow us to directly connect formal language classes to classes of <em>functions</em>, through the technique of logical interpretations [<a href="bibliography.html#engelfriethoogeboom01">engelfriethoogeboom01</a>],[<a href="bibliography.html#filiot15">filiot15</a>].</p>
+</li>
+</ul>
+<p>There are more, which we will learn about more later. 
+For now, we will use FO as a primer for using logical statements as grammars for languages, and discuss how FO is connected to the <strong>star-free (SF)</strong> class of formal languages [<a href="bibliography.html#mcnaughtonpapert71">mcnaughtonpapert71</a>].</p>
+<h2 id="models"><a class="header" href="#models">Models</a></h2>
+<h3 id="what-are-models"><a class="header" href="#what-are-models">What are models?</a></h3>
+<p>Before we define our logic, we have to define strings in a bit more detail. 
+To do this we use <strong>model theory</strong>, the mathematical structure of language. </p>
+<p>A (finite) <strong>model</strong> is a mathematical object that lets us describe other objects. 
+Formally, it is a tuple consisting of a set of elements or <strong>domain</strong> (or <strong>universe</strong>) \(D\) and a series of relations \(R_1,R_2,..., R_n\) on the domain. </p>
+<p>\[\langle D; R_1, R_2, ..., R_n\rangle\]</p>
+<p>This set of relations \(R_1,R_2...,R_n\) is called a <strong>signature</strong>. 
+We'll use calligraphic letters, e.g. \(\mathcal{S}\), to indicate signatures.</p>
+<p>Since strings are finite, we'll assume that \(D\) is finite. 
+The domain \(D\) allows us to talk about units or atoms that make up an object, and the relations \(R_1,...,R_n\) allow us to talk about relationships among those units.
+In order to describe a set of structures, we need a signature that <em>there is at least one model for each of those structures</em>.</p>
+<blockquote>
+<p>Consider strings over the alphabet \(\Sigma=\{a, b, c\}\). 
+What kind of model can we use to describe these? 
+What relations do we need?</p>
+</blockquote>
+<blockquote>
+<p>Consider the string \(abab\). What is \(D\)?</p>
+</blockquote>
+<blockquote>
+<p>What relation(s) might we add to our string model to distinguish the string \(abab\) from the string \(acac\)? 
+Remember that we can only use information that is made explicit in the model (assume also that we have equality, =).</p>
+</blockquote>
+<blockquote>
+<p>Keeping this same restriction in mind, how do we distinguish \(abab\) from \(baba\)?</p>
+</blockquote>
+<h3 id="the-string-signature-mathcals"><a class="header" href="#the-string-signature-mathcals">The string signature \(\mathcal{S}^&lt;\)</a></h3>
+<p>The signature we will use to represent strings in an arbitrary finite alphabet \(\Sigma=\{\sigma_1,\sigma_2,...,\sigma_n\}\) is as follows.</p>
+<p>\[\mathcal{S}^&lt;=\{\sigma_1,\sigma_2,...,\sigma_n,&lt;\}\]</p>
+<blockquote>
+<ul>
+<li>Let's convince ourselves that for every string in \(\Sigma^*\) there is a distinct model for that string in \(\mathcal{S}^&lt;\). 
+What is a model for the string \(cabc\)?
+For \(aaaaaaaa\)?
+For \(\lambda\)?</li>
+</ul>
+</blockquote>
+<h2 id="first-order-logic"><a class="header" href="#first-order-logic">First order logic</a></h2>
+<h3 id="syntax"><a class="header" href="#syntax">Syntax</a></h3>
+<p>Given a signature, we can define a FO logic over that signature. 
+To build such a logic and define how it can be interpreted over models in the signature, we need to define the <strong>syntax</strong> and <strong>semantics</strong> of FO.</p>
+<p>Statements in FO choose from a set of <strong>variables</strong> \(\mathcal{X}=\{x,y,z,...,x_1,x_2,...\}\). </p>
+<p>Additionally, for each relation in the signature, we have a set of <strong>atomic formulas</strong> that correspond to the relations in our model (plus equality).</p>
+<p><strong>Definition.</strong> (Atomic formulas)</p>
+<ul>
+<li>For any two variables \(x\) and \(y\), \(x=y\) is an atomic formula</li>
+<li>For any two variables \(x\) and \(y\), \(x&lt;y\) is an atomic formula</li>
+<li>For any variable \(x\) and any symbol \(\sigma\in\Sigma\), \(\sigma(x)\) is an atomic formula</li>
+</ul>
+<p>The set of <strong>well-formed formulas (WFFs)</strong> in FO is then built out of atomic formulas connected by the logical connectives \(\neg, \land, \lor, \rightarrow\) and the quantifiers \(\forall, \exists\).</p>
+<p><strong>Definition.</strong> (Well-formed formulas) \label{check}</p>
+<ul>
+<li>If \(\varphi\) is an atomic formula, then \(\varphi\) is a WFF \mnote{\(\neg, \land, \lor, \rightarrow, \forall, \exists\)}</li>
+<li>If \(\varphi\) is a WFF, then \((\neg\varphi)\) is a WFF</li>
+<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\land\psi)\) are WFFs</li>
+<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\lor\psi)\) are WFFs</li>
+<li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\rightarrow\psi)\) are WFFs</li>
+<li>If \(\varphi\) is a WFF for which \(x\) is a free variable, then \((\forall x)[\varphi]\) is a WFF</li>
+<li>If \(\varphi\) is a WFF for which \(x\) is a free variable, then \((\exists x)[\varphi]\) is a WFF</li>
+</ul>
+<p>A <strong>free variable</strong> in an formula \(\varphi\) is a variable \(x\) such that \(...x...\) appears in \(\varphi\) without being preceded by \((\forall x)\) or \((\exists x)\) (i.e., it's not <strong>bound</strong> by a quantifier).
+A WFF with no free variables is called a <strong>sentence</strong>.</p>
+<p><strong>Note:</strong> The parentheses in the above definition make the composition of a WFF explicit, but they are often removed for readability. 
+Technically, the first example above is abbreviated somewhat. </p>
+<blockquote>
+<p>To convince yourself how this works, apply the above definition to construct \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\). </p>
+</blockquote>
+<h3 id="semantics"><a class="header" href="#semantics">Semantics</a></h3>
+<p>So far our FO WFFs are just strings of meaningless symbols. 
+We have to define the semantics of our WFFs; that is, when a WFF is true in a model.</p>
+<p>For a model \(M\), take a function \(s:\mathcal{X}\rightarrow D\) that maps the set of possible FO variables to positions in \(M\)'s domain \(D\). 
+We can then say that the model <strong>satisfies</strong> a WFF \(\varphi\) given this mapping, written </p>
+<p>\[M\models\varphi[s]\]</p>
+<p>under the following conditions:</p>
+<p><strong>Definition.</strong> (Semantics of FO)</p>
+<p>a. \(M\models x=y[s]\)   iff   \(s(x)=s(y)\)</p>
+<p>b. \(M\models x&lt;y[s]\)   iff   \(s(x)&lt;s(y)\)</p>
+<p>c. \(M\models \sigma(x)[s]\)   iff   \(s(x)\in P_\sigma\)</p>
+<p>d. \(M\models (\neg\varphi)[s]\)   iff \(M\not\models\varphi[s]\)</p>
+<p>e. \(M\models (\varphi\land\psi)[s]\)  iff \(M\models\varphi[s]\) and \(M\models\psi[s]\)</p>
+<p>f. \(M\models (\varphi\lor\psi)[s]\) iff \(M\models\varphi[s]\) or \(M\models\psi[s]\)</p>
+<p>g. \(M\models (\varphi\rightarrow\psi)[s]\) iff \(M\models(\neg\varphi\lor\psi)[s]\)</p>
+<p>h. \(M\models (\forall x)[\varphi][s]\) iff for all \(d\in D\), \(M\models \varphi[s; x\mapsto d]\)</p>
+<p>i. \(M\models (\exists x)[\varphi][s]\) iff for some \(d\in D\), \(M\models \varphi[s; x\mapsto d]\)</p>
+<p>If \(\varphi\) is a sentence, we can define satisfaction independent of such a function.</p>
+<p><strong>Definition</strong> (Satisfaction of a sentence). \(M\models\varphi\) if for all \(s:\mathcal{X}\rightarrow D\), \(M\models\varphi[s]\).</p>
+<h3 id="fo-setnences-as-grammars"><a class="header" href="#fo-setnences-as-grammars">FO setnences as grammars</a></h3>
+<p>Take a moment to convince yourself that \(L\) is exactly the set of strings that satisfies the sentence \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\).</p>
+<p>Let's look at some more.</p>
+<ul>
+<li>Write an FO sentence that describes the set of strings that <em>do not</em> end in a \(b\). </li>
+<li>Write an FO sentence that describes the set of strings in which \(a\) cannot be followed by another \(a\), unless a \(b\) intervenes. That is, \(caccccac\) is not in the language but \(caccbccca\) is (think the obligatory contour principle-type constraint with blocking).</li>
+<li>What about an FO sentence that describes \((ab)^n\)? 
+<strong>Hint:</strong> we can define a <strong>successor</strong> relation \(\triangleleft\) from \(&lt;\) using the following equation
+\[x\triangleleft y:= x&lt;y\land\neg(\exists z)[x&lt;z\land z&lt;y]\]</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next" href="bibliography.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next" href="bibliography.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
