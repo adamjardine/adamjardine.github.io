@@ -193,44 +193,65 @@ Among them are the following.</p>
 </ul>
 <p>There are more, which we will learn about more later. 
 For now, we will use FO as a primer for using logical statements as grammars for languages, and discuss how FO is connected to the <strong>star-free (SF)</strong> class of formal languages [<a href="bibliography.html#mcnaughtonpapert71">mcnaughtonpapert71</a>].</p>
-<h2 id="models"><a class="header" href="#models">Models</a></h2>
-<h3 id="what-are-models"><a class="header" href="#what-are-models">What are models?</a></h3>
+<h2 id="string-models"><a class="header" href="#string-models">String models</a></h2>
 <p>Before we define our logic, we have to define strings in a bit more detail. 
+That is, it is necessary to encode all the information that is necessary to identify a particular string. 
 To do this we use <strong>model theory</strong>, the mathematical structure of language. </p>
-<p>A (finite) <strong>model</strong> is a mathematical object that lets us describe other objects. 
-Formally, it is a tuple consisting of a set of elements or <strong>domain</strong> (or <strong>universe</strong>) \(D\) and a series of relations \(R_1,R_2,..., R_n\) on the domain. </p>
-<p>\[\langle D; R_1, R_2, ..., R_n\rangle\]</p>
+<p>Continuing to fix our alphabet to \(\Sigma=\{a,b,c\}\), what information do we need to identify a particular string in \(\Sigma^*\) from any other?
+The <strong>model</strong> will be a representation of this information.</p>
+<p>First, think about the string \(aaaa\) as opposed to \(aaaaaa\). 
+What distinguishes the former from the latter, clearly, is that there are four symbols in \(aaaa\) whereas there are six in \(aaaaaa\). 
+So we need to distinguish the <em>number</em> of elements in a string. </p>
+<p>We do that by establishing a <strong>domain</strong> (also referred to as a <strong>universe</strong>) (D) of elements in the string. 
+This is a finite set of objects that represent the elements in our structure. 
+By convention, we will use an initial sequence of natural numbers, i.e.
+\[D=\{1,2,3,4,...,n\}\]
+for some finite \(n\). 
+Thus, for example, the domain of the model for \(aaaa\) will be \(\{1,2,3,4\}\) and the domain for the model for \(aaaaaa\) will be \(\{1,2,3,4,5,6\}\). </p>
+<p><strong>Note:</strong> While we use numbers, <em>there is no inherent order on these objects</em>. 
+We could instead be using symbols like \(\{\square,\triangle,\bigcirc,\diamondsuit\}\). 
+But numbers are just easier.</p>
+<p>Of course, \(\Sigma^*\) does not only contain strings of all \(a\)s. 
+The string \(aaaa\) must also be distinguished from, say \(abaa\). 
+So we have to specify the <em>symbols</em> that are associated with elements in the string.
+We do this using <strong>relations</strong> on the domain in the model.
+A relation \(R\) is a <strong>unary relation</strong> (or <strong>property</strong>) or simply a subset of the domain:
+\[R\subseteq D\]</p>
+<p>So we can add a unary relation \(R_b\) that indicates which elements are (b)s. 
+Thus the model for \(aaaa\) would be 
+\[M(aaaa)=\langle D=\{1,2,3,4\}; R_b=\{\}\rangle\]
+and the model for \(abaa\) would be 
+\[M(abaa)=\langle D=\{1,2,3,4\}; R_b=\{2\}\rangle.\]</p>
+<p>We are not yet done though. 
+Consider \(abaa\) and \(aaba\). 
+These are distinct strings, but their models will be equivalent:
+\[M(abaa)=\langle D=\{1,2,3,4\}; R_b=\{2\}\rangle\]
+\[M(aaba)=\langle D=\{1,2,3,4\}; R_b=\{3\}\rangle\]
+Note that the element in \(R_b\) is different in each of these models, given our numbering scheme, <em>but these elements do not have any inherent order</em>. 
+So \(\langle D=\{1,2,3,4\}; R_b=\{3\}\rangle\) is <strong>isomorphic</strong> to \(\langle D=\{1,2,3,4\}; R_b=\{2\}\rangle\). 
+That is, <em>given the information available in the model</em>, there is no way to tell the two apart.</p>
+<p>So, we add a <strong>binary relation</strong> \(R_&lt;\) that orders the elements in the model.
+A binary relation \(R\) consists of pairs of elements in the domain; i.e.
+\[R\subseteq D\times D\]</p>
+<p>For example, for \(abaa\) we have
+\[M(abaa)=\langle D=\{1,2,3,4\}; R_b=\{2\}, R_&lt;=\{(1,2),(2,3),(1,3),(1,4),(2,4),(3,4)\}\rangle\]
+and for \(aaba\) we have 
+\[M(aaba)=\langle D=\{1,2,3,4\}; R_b=\{3\}, R_&lt;=\{(1,2),(2,3),(1,3),(1,4),(2,4),(3,4)\}\rangle.\]</p>
+<p>Now these are different (i.e., non-equivalent) models!
+In \(M(abaa)\), the element in \(R_b\) is only preceded by one other element;
+in \(M(aaba)\), the element in \(R_b\) is preceded by two. 
+So now we have a way to distinguish strings in \(a\)s and \(b\)s, with one relation marking the \(b\)s and an ordering relation on the elements of the domain. </p>
+<p>To also capture \(c\)s, we need to add another relation, \(R_c\). 
+In fact, for any string signature, it's most straightforward to have a unary relation for each symbol in the alphabet. 
+Thus, in this particular case, for any string model we'll need the unary relations \(R_a,R_b,R_c\) and the binary relation \(R_&lt;\). </p>
 <p>This set of relations \(R_1,R_2...,R_n\) is called a <strong>signature</strong>. 
 We'll use calligraphic letters, e.g. \(\mathcal{S}\), to indicate signatures.</p>
-<p>Since strings are finite, we'll assume that \(D\) is finite. 
-The domain \(D\) allows us to talk about units or atoms that make up an object, and the relations \(R_1,...,R_n\) allow us to talk about relationships among those units.
-In order to describe a set of structures, we need a signature that <em>there is at least one model for each of those structures</em>.</p>
-<blockquote>
-<p>Consider strings over the alphabet \(\Sigma=\{a, b, c\}\). 
-What kind of model can we use to describe these? 
-What relations do we need?</p>
-</blockquote>
-<blockquote>
-<p>Consider the string \(abab\). What is \(D\)?</p>
-</blockquote>
-<blockquote>
-<p>What relation(s) might we add to our string model to distinguish the string \(abab\) from the string \(acac\)? 
-Remember that we can only use information that is made explicit in the model (assume also that we have equality, =).</p>
-</blockquote>
-<blockquote>
-<p>Keeping this same restriction in mind, how do we distinguish \(abab\) from \(baba\)?</p>
-</blockquote>
-<h3 id="the-string-signature-mathcals"><a class="header" href="#the-string-signature-mathcals">The string signature \(\mathcal{S}^&lt;\)</a></h3>
 <p>The signature we will use to represent strings in an arbitrary finite alphabet \(\Sigma=\{\sigma_1,\sigma_2,...,\sigma_n\}\) is as follows.</p>
-<p>\[\mathcal{S}^&lt;=\{\sigma_1,\sigma_2,...,\sigma_n,&lt;\}\]</p>
-<blockquote>
-<ul>
-<li>Let's convince ourselves that for every string in \(\Sigma^*\) there is a distinct model for that string in \(\mathcal{S}^&lt;\). 
-What is a model for the string \(cabc\)?
-For \(aaaaaaaa\)?
-For \(\lambda\)?</li>
-</ul>
-</blockquote>
+<p>\[\mathcal{S}^&lt;=\{R_{\sigma_1},R_{\sigma_2},...,R_{\sigma_n},R_&lt;\}\]</p>
+<p>To recap, a (finite) <strong>model</strong> is a mathematical object that lets us describe other objects. 
+Formally, it is a tuple consisting of a set of elements or <strong>domain</strong> (or <strong>universe</strong>) \(D\) and a series of relations \(R_1,R_2,..., R_n\) on the domain. </p>
+<p>\[\langle D; R_1, R_2, ..., R_n\rangle\]</p>
+<p>The name of a particular set of relations that we use to model some set of structures is a <strong>signature</strong>. </p>
 <h2 id="first-order-logic"><a class="header" href="#first-order-logic">First order logic</a></h2>
 <h3 id="syntax"><a class="header" href="#syntax">Syntax</a></h3>
 <p>Given a signature, we can define a FO logic over that signature. 
@@ -244,9 +265,9 @@ To build such a logic and define how it can be interpreted over models in the si
 <li>For any variable \(x\) and any symbol \(\sigma\in\Sigma\), \(\sigma(x)\) is an atomic formula</li>
 </ul>
 <p>The set of <strong>well-formed formulas (WFFs)</strong> in FO is then built out of atomic formulas connected by the logical connectives \(\neg, \land, \lor, \rightarrow\) and the quantifiers \(\forall, \exists\).</p>
-<p><strong>Definition.</strong> (Well-formed formulas) \label{check}</p>
+<p><strong>Definition.</strong> (Well-formed formulas) </p>
 <ul>
-<li>If \(\varphi\) is an atomic formula, then \(\varphi\) is a WFF \mnote{\(\neg, \land, \lor, \rightarrow, \forall, \exists\)}</li>
+<li>If \(\varphi\) is an atomic formula, then \(\varphi\) is a WFF </li>
 <li>If \(\varphi\) is a WFF, then \((\neg\varphi)\) is a WFF</li>
 <li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\land\psi)\) are WFFs</li>
 <li>If \(\varphi\) and \(\psi\) are WFFs, then \((\varphi\lor\psi)\) are WFFs</li>
@@ -280,7 +301,7 @@ We can then say that the model <strong>satisfies</strong> a WFF \(\varphi\) give
 <p>i. \(M\models (\exists x)[\varphi][s]\) iff for some \(d\in D\), \(M\models \varphi[s; x\mapsto d]\)</p>
 <p>If \(\varphi\) is a sentence, we can define satisfaction independent of such a function.</p>
 <p><strong>Definition</strong> (Satisfaction of a sentence). \(M\models\varphi\) if for all \(s:\mathcal{X}\rightarrow D\), \(M\models\varphi[s]\).</p>
-<h3 id="fo-setnences-as-grammars"><a class="header" href="#fo-setnences-as-grammars">FO setnences as grammars</a></h3>
+<h3 id="fo-sentences-as-grammars"><a class="header" href="#fo-sentences-as-grammars">FO sentences as grammars</a></h3>
 <p>Take a moment to convince yourself that \(L\) is exactly the set of strings that satisfies the sentence \((\forall x)[a(x)\rightarrow\neg(\exists y)[b(y)\land x&lt;y]]\).</p>
 <p>Let's look at some more.</p>
 <ul>
@@ -331,10 +352,10 @@ function copyToClipboard(text) {
 </script>
 <style></style>
 <div class="bib_div">
-<details data-key="buchi60" class=ref>
+<details data-key="filiot15" class=ref>
 <summary class=citation>
-<a id="buchi60">[buchi60]</a> - J. Richard Bϋchi - <a href="https://onlinelibrary.wiley.com/doi/10.1002/malq.19600060105" target="_blank"><cite>Weak second-order arithmetic and finite automata</cite></a>. - 1960. -
-<button onclick="copyToClipboard('\{\{ #cite buchi60 \}\}')">Copy citation_key</button>
+<a id="filiot15">[filiot15]</a> - Emmanual Filiot - <cite>Logic-Automata Connections for Transformations</cite>. - 2015. -
+<button onclick="copyToClipboard('\{\{ #cite filiot15 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract"><a class="header" href="#summaryabstract">Summary/Abstract</a></h1>
@@ -344,26 +365,13 @@ function copyToClipboard(text) {
 </div>
 <br/>
 <div class="bib_div">
-<details data-key="heinz10" class=ref>
+<details data-key="buchi60" class=ref>
 <summary class=citation>
-<a id="heinz10">[heinz10]</a> - Jeffrey Heinz - <a href="http://jeffreyheinz.net/papers/Heinz-2010-LLP.pdf" target="_blank"><cite>Learning Long-Distance Phonotactics</cite></a>. - 2010. -
-<button onclick="copyToClipboard('\{\{ #cite heinz10 \}\}')">Copy citation_key</button>
+<a id="buchi60">[buchi60]</a> - J. Richard Bϋchi - <a href="https://onlinelibrary.wiley.com/doi/10.1002/malq.19600060105" target="_blank"><cite>Weak second-order arithmetic and finite automata</cite></a>. - 1960. -
+<button onclick="copyToClipboard('\{\{ #cite buchi60 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-1"><a class="header" href="#summaryabstract-1">Summary/Abstract</a></h1>
-<div>N/A</div>
-</section>
-</details>
-</div>
-<br/>
-<div class="bib_div">
-<details data-key="filiot15" class=ref>
-<summary class=citation>
-<a id="filiot15">[filiot15]</a> - Emmanual Filiot - <cite>Logic-Automata Connections for Transformations</cite>. - 2015. -
-<button onclick="copyToClipboard('\{\{ #cite filiot15 \}\}')">Copy citation_key</button>
-</summary>
-<section class=abstract>
-<h1 id="summaryabstract-2"><a class="header" href="#summaryabstract-2">Summary/Abstract</a></h1>
 <div>N/A</div>
 </section>
 </details>
@@ -374,6 +382,19 @@ function copyToClipboard(text) {
 <summary class=citation>
 <a id="mcnaughtonpapert71">[mcnaughtonpapert71]</a> - Robert McNaughton, Seymour Papert - <cite>Counter-Free Automata</cite>. - 1971. -
 <button onclick="copyToClipboard('\{\{ #cite mcnaughtonpapert71 \}\}')">Copy citation_key</button>
+</summary>
+<section class=abstract>
+<h1 id="summaryabstract-2"><a class="header" href="#summaryabstract-2">Summary/Abstract</a></h1>
+<div>N/A</div>
+</section>
+</details>
+</div>
+<br/>
+<div class="bib_div">
+<details data-key="rogerspullum11" class=ref>
+<summary class=citation>
+<a id="rogerspullum11">[rogerspullum11]</a> - James Rogers, Geoffrey Pullum - <a href="https://www.cs.earlham.edu/~jrogers/mol10.pdf" target="_blank"><cite>Aural Pattern Recognition Experiments and The Subregular Hierarchy</cite></a>. - 2011. -
+<button onclick="copyToClipboard('\{\{ #cite rogerspullum11 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-3"><a class="header" href="#summaryabstract-3">Summary/Abstract</a></h1>
@@ -396,10 +417,10 @@ function copyToClipboard(text) {
 </div>
 <br/>
 <div class="bib_div">
-<details data-key="rogerspullum11" class=ref>
+<details data-key="heinz10" class=ref>
 <summary class=citation>
-<a id="rogerspullum11">[rogerspullum11]</a> - James Rogers, Geoffrey Pullum - <a href="https://www.cs.earlham.edu/~jrogers/mol10.pdf" target="_blank"><cite>Aural Pattern Recognition Experiments and The Subregular Hierarchy</cite></a>. - 2011. -
-<button onclick="copyToClipboard('\{\{ #cite rogerspullum11 \}\}')">Copy citation_key</button>
+<a id="heinz10">[heinz10]</a> - Jeffrey Heinz - <a href="http://jeffreyheinz.net/papers/Heinz-2010-LLP.pdf" target="_blank"><cite>Learning Long-Distance Phonotactics</cite></a>. - 2010. -
+<button onclick="copyToClipboard('\{\{ #cite heinz10 \}\}')">Copy citation_key</button>
 </summary>
 <section class=abstract>
 <h1 id="summaryabstract-5"><a class="header" href="#summaryabstract-5">Summary/Abstract</a></h1>
