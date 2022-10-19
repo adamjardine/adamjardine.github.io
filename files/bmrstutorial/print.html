@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>BMRS for Phonological Analysis</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">BMRS for Phonological Analysis</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="boolean-monadic-recursive-schemes-for-phonological-analysis-a-tutorial"><a class="header" href="#boolean-monadic-recursive-schemes-for-phonological-analysis-a-tutorial">Boolean Monadic Recursive Schemes for Phonological Analysis: A tutorial</a></h1>
+<p><strong>A Tutorial for the 2022 Annual Meeting on Phonology @ UCLA</strong></p>
+<p>Jane Chandlee (Haverford College)<br />
+Adam Jardine (Rutgers University)<br />
+Adam McCollum (Rutgers University)<br />
+Tatevik Yolyan (Rutgers University)</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<ul>
+<li>A theory of phonology...
+<ul>
+<li>allows us to directly state linguistically significant generalizations; </li>
+<li>captures abstract universals about the phonological cognitive module;</li>
+<li>(and is also learnable)</li>
+</ul>
+</li>
+<li><strong>Boolean monadic recursive schemes (BMRS)</strong> is a logical formalism for implementing such a theory</li>
+<li>An example: (put example here)</li>
+</ul>
+<h2 id="using-this-site"><a class="header" href="#using-this-site">Using this site</a></h2>
+<p>This is a companion site to the presentation. 
+It more or less follows the slides.
+Use the menu to navigate the table of contents.</p>
+<!--
+## Technical details
+
+This was written using [mdbook](https://rust-lang.github.io/mdBook/index.html) (thanks to [Nick Danis](https://www.nickdanis.com/) for introducing it to us) and is hosted on [GitHub](https://github.io).
+
+
+---
+
+
+© 2022 the authors
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+-->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boolean-monadic-recursive-schemes-bmrs"><a class="header" href="#boolean-monadic-recursive-schemes-bmrs">Boolean Monadic Recursive Schemes (BMRS)</a></h1>
+<ul>
+<li>A logical characterization of a phonological process includes:
+<ul>
+<li><strong>Models</strong> (representations) that specify the set of elements in a structure, the properties of those elements, and relations between elements;</li>
+<li>A <strong>logical language</strong> for making statements about elements in the structure; and</li>
+<li>an <strong>interpretation</strong> which defines a function by specifying the elements, properties, and relations in the output structure in terms of logical statements about the input structure.</li>
+</ul>
+</li>
+</ul>
+<h2 id="string-models"><a class="header" href="#string-models">String models</a></h2>
+<ul>
+<li>
+<p>A <strong>string model</strong> explicitly defines all of the elements in the string with:</p>
+<ul>
+<li><strong>indices</strong> (elements in the structure)</li>
+<li><strong>order functions</strong> \(p\) and \(s\)</li>
+<li><strong>properties</strong> of the indices</li>
+</ul>
+</li>
+<li>
+<p>We'll assume a set of (privative) featural properties </p>
+</li>
+</ul>
+<p>(diagram)</p>
+<ul>
+<li><strong>Note:</strong> 
+<ul>
+<li>\(\top\) refers to <strong>true</strong>, \(\bot\) <strong>false</strong></li>
+<li>\(\rtimes\) and \(\ltimes\) represent boundaries (i.e., the equivalent of #)</li>
+</ul>
+</li>
+</ul>
+<h2 id="logical-language"><a class="header" href="#logical-language">Logical language</a></h2>
+<p>The core of BMRS syntax are expressions of the form </p>
+<p>\[\mathtt{if}~A~\mathtt{then}~B~\mathtt{else}~C\]</p>
+<p>that return boolean values (\(\top\) or \(\bot\))</p>
+<p>For example, </p>
+<p>\[
+\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi}]_i(x)
+\]</p>
+<p>...is \(\top\) iff \(x\) is a voiced obstruent.</p>
+<p>(diagram)</p>
+<p>Furthermore, \(A\), \(B\), or \(C\) can be another expression. 
+Usually this is \(C\), to chain together expressions, as in</p>
+<p>\[
+\begin{array}[t]{l}
+\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~\\
+\mathtt{if}~[\mathrm{voi}]_i(x)~\mathtt{then}~\top~\mathtt{else}~\bot
+\end{array}
+\]</p>
+<p>As is perhaps obvious at this point, expressions define <em>properties</em>. 
+For example, we can explicitly define what it means to be a voiced obstruent using the expression above.</p>
+<p>\[\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x):=\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi]_i(x)}\]</p>
+<p>Or what it means to be word-final.</p>
+<p>\[
+\mathrm{final}_i(x):=\mathtt{if}~\ltimes(s(x))~\mathtt{then}~\top~\mathtt{else}~\bot
+\]</p>
+<p>And then what it means to be a word-final obstruent.</p>
+<p>\[
+\mathrm{D\#}_i(x):=\mathtt{if}~\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x)~\mathtt{then}~\mathrm{final}(x)~\mathtt{else}~\bot
+\]</p>
+<h2 id="interpretations"><a class="header" href="#interpretations">Interpretations</a></h2>
+<p>A map changes input structures to output structures. 
+Another way to think about it is that, under a map, an output structure is some reflection of the input structure.</p>
+<p>(diagram)</p>
+<p><strong>Interpretations</strong> specify maps by defining output structures in terms of the input structures <a href="https://arxiv.org/abs/cs/9906007">(Engelfriet and Hoogeboom, 2001)</a>.</p>
+<p>(diagram)</p>
+<p>A <strong>scheme</strong> is thus a series of definitions of (output) properties.
+A <strong>boolean monadic recursive scheme</strong> is thus a scheme in which each property in the scheme is <strong>boolean</strong> (i.e., returns a boolean value) and <strong>monadic</strong> (i.e. unary), and the definitions are <strong>recursive</strong> (i.e., the properties being defined can be used in their definitions). </p>
+<p>In phonological terms, output formulas assert the conditions under which a segment is \(+\) for a given feature in the output structure.</p>
+<p>Thus, a BMRS for word-final devoicing is as follows:</p>
+<p>(diagrams)</p>
+<h2 id="recursion"><a class="header" href="#recursion">Recursion</a></h2>
+<p>Consider unbounded H-tone spread to penult. </p>
+<p>\[
+\begin{array}[t]{lcl}
+\acute{\sigma}\sigma\sigma             &amp; \mapsto &amp; \acute{\sigma}\acute{\sigma}\sigma         \\
+\sigma\acute{\sigma}\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\sigma\sigma\acute{\sigma}\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\sigma\acute{\sigma}\sigma\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\mathrm{etc.}
+\end{array}
+\]</p>
+<p>This is an <em>output</em>-oriented process. 
+That is, whether a syllable is H-toned depends on the <em>output</em> tonal value of the preceding syllable.</p>
+<p>Let \(\acute{\sigma}_i(x)\) represent the input contrast between H and non-H syllables, and \(\acute{\sigma}_o(x)\) representing the same in the output,
+we can do this explicitly in BMRS using a <strong>recursive</strong> definition of \(\acute{\sigma}_o(x)\). </p>
+<p>The below is a first approximation, although it is a bit wrong.</p>
+<p>\[
+\acute{\sigma}_o(x):= \mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}~\acute{\sigma}_i(x)
+\]</p>
+<p>This works as shown below:</p>
+<p>\[
+\begin{array}[t]{rccccccc}
+\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
+\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
+\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; ^*\top              \\
+\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} \\
+\end{array}
+\]</p>
+<p>The H tone spreads leftward all the way to the final syllable, as indicated by \(^*\top\). 
+So we preempt this in the case that \(x\) is the final syllable:</p>
+<p>\[
+\acute{\sigma}_o(x):= 
+\begin{array}[t]{l}
+\mathtt{if}~\mathrm{final}(x)~\mathtt{then}~\bot~\mathtt{else}\\
+\mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}\\
+\acute{\sigma}_i(x)
+\end{array}
+\]</p>
+<p>In this way, \(\mathrm{final}(x)\) acts like a higher-ranking constraint, blocking the spread of the H tone only in the final syllable:</p>
+<p>\[
+\begin{array}[t]{rccccccc}
+\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
+\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
+\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; \bot              \\
+\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \sigma \\
+\end{array}
+\]</p>
+<h2 id="review"><a class="header" href="#review">Review</a></h2>
+<p>BMRSs are </p>
+<ul>
+<li>logical descriptions of maps</li>
+<li>series of definitions of the form
+\[
+[\mathrm{F}]_o(x) =
+\begin{array}[t]{l}
+\mathtt{if}~\mathrm{(condition 1)}(x)~\mathtt{then}~{\top/\bot}~\mathtt{else}\\
+\mathtt{if}~\mathrm{(condition 2)}(x)~\mathtt{then}~{\top/\bot}~\mathtt{else}\\
+\vdots\\
+[\mathrm{F}]_i(x)
+\end{array}
+\]</li>
+<li>computationally restrictive (Bhaskar et al., 2020; [<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]). </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="open-questions"><a class="header" href="#open-questions">Open Questions</a></h1>
+<p>The following would be great BMRS-related projects for submitting to AMP 2023.</p>
+<ol>
+<li>What does a tertiary feature system look like in BMRS? (Turkish voicing alternations)</li>
+<li>BMRS captures elsewhere condition-type effects well. What about non-derived environment blocking? </li>
+<li>What is the status of intermediate representations in BMRS? (Adam M. adds Arapahoe citation)</li>
+<li>How does BMRS capture the typology of stress patterns? For example, that of Gordon 2002?</li>
+</ol>
+<p>...and many more!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bibliography"><a class="header" href="#bibliography">Bibliography</a></h1>
+<p>The following are links to some literature for learning more about BMRS.</p>
+<ul>
+<li>
+<p>Bhaskar, S., Chandlee, J., Jardine, A., and Oakden, C. (2020). Boolean monadic recursive schemes as a logical characterization of the subsequential functions. In <em>Language and Automata Theory and Applications - LATA 2020, Lecture Notes in Computer Science</em>, pg. 157–169. Springer.
+[<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]</p>
+</li>
+<li>
+<p>Chandlee, J. and Jardine, A. (2021). Computational universals in linguistic theory: Using recursive programs for phonological analysis. <em>Language 93</em>:485–519.
+[<a href="http://adamjardine.net/files/chandleejardineBMRSms.pdf">pdf</a>;<a href="https://muse.jhu.edu/article/806346">pub link</a>]</p>
+</li>
+<li>
+<p>Jardine, A. and Oakden, C. (to appear). Process-specific constraint effects in BMRS. <em>Linguistic Inquiry</em>.
+[<a href="http://adamjardine.net/files/oakdenjardineBMRSPSC.pdf">pdf</a>]</p>
+</li>
+<li>
+<p>McCollum, A. and Jardine, A. (2022). Input- and output-oriented generalizations in Iny ATR harmony. Rutgers University.
+[<a href="https://ling.auf.net/lingbuzz/006830">lingbuzz</a>]</p>
+</li>
+<li>
+<p>Oakden, C. (2021). <em>Modeling phonological interactions using recursive schemes</em>. PhD thesis, Rutgers University.
+[pdf]</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>
