@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Bibliography - BMRS for Phonological Analysis</title>
+        <title>Recursion - BMRS for Phonological Analysis</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html" class="active"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html" class="active"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,39 +145,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="bibliography"><a class="header" href="#bibliography">Bibliography</a></h1>
-<p>The following are links to some literature for learning more about BMRS.</p>
-<ul>
-<li>
-<p>Bhaskar, S., Chandlee, J., Jardine, A., and Oakden, C. (2020). Boolean monadic recursive schemes as a logical characterization of the subsequential functions. In <em>Language and Automata Theory and Applications - LATA 2020, Lecture Notes in Computer Science</em>, pg. 157–169. Springer.
-[<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]</p>
-</li>
-<li>
-<p>Chandlee, J. and Jardine, A. (2021). Computational universals in linguistic theory: Using recursive programs for phonological analysis. <em>Language 93</em>:485–519.
-[<a href="http://adamjardine.net/files/chandleejardineBMRSms.pdf">pdf</a>;<a href="https://muse.jhu.edu/article/806346">pub link</a>]</p>
-</li>
-<li>
-<p>Jardine, A. and Oakden, C. (to appear). Process-specific constraint effects in BMRS. <em>Linguistic Inquiry</em>.
-[<a href="http://adamjardine.net/files/oakdenjardineBMRSPSC.pdf">pdf</a>]</p>
-</li>
-<li>
-<p>McCollum, A. and Jardine, A. (2022). Input- and output-oriented generalizations in Iny ATR harmony. Rutgers University.
-[<a href="https://ling.auf.net/lingbuzz/006830">lingbuzz</a>]</p>
-</li>
-<li>
-<p>Oakden, C. (2021). <em>Modeling phonological interactions using recursive schemes</em>. PhD thesis, Rutgers University.
-[pdf]</p>
-</li>
-</ul>
+                        <h1 id="recursion"><a class="header" href="#recursion">Recursion</a></h1>
+<p>Consider unbounded H-tone spread to penult. </p>
+<p>\[
+\begin{array}[t]{lcl}
+\acute{\sigma}\sigma\sigma             &amp; \mapsto &amp; \acute{\sigma}\acute{\sigma}\sigma         \\
+\sigma\acute{\sigma}\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\sigma\sigma\acute{\sigma}\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\sigma\acute{\sigma}\sigma\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
+\mathrm{etc.}
+\end{array}
+\]</p>
+<p>This is an <em>output</em>-oriented process. 
+That is, whether a syllable is H-toned depends on the <em>output</em> tonal value of the preceding syllable.</p>
+<p>Let \(\acute{\sigma}_i(x)\) represent the input contrast between H and non-H syllables, and \(\acute{\sigma}_o(x)\) representing the same in the output,
+we can do this explicitly in BMRS using a <strong>recursive</strong> definition of \(\acute{\sigma}_o(x)\). </p>
+<p>The below is a first approximation, although it is a bit wrong.</p>
+<p>\[
+\acute{\sigma}_o(x):= \mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}~\acute{\sigma}_i(x)
+\]</p>
+<p>This works as shown below:</p>
+<p>\[
+\begin{array}[t]{rccccccc}
+\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
+\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
+\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; ^*\top              \\
+\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} \\
+\end{array}
+\]</p>
+<p>The H tone spreads leftward all the way to the final syllable, as indicated by \(^*\top\). 
+So we preempt this in the case that \(x\) is the final syllable:</p>
+<p>\[
+\acute{\sigma}_o(x):= 
+\begin{array}[t]{l}
+\mathtt{if}~\mathrm{final}(x)~\mathtt{then}~\bot~\mathtt{else}\\
+\mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}\\
+\acute{\sigma}_i(x)
+\end{array}
+\]</p>
+<p>In this way, \(\mathrm{final}(x)\) acts like a higher-ranking constraint, blocking the spread of the H tone only in the final syllable:</p>
+<p>\[
+\begin{array}[t]{rccccccc}
+\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
+\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
+\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; \bot              \\
+\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \sigma \\
+\end{array}
+\]</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="questions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="interp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next" href="review.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -185,10 +211,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="questions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="interp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next" href="review.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
 
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -84,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -190,21 +191,21 @@ This was written using [mdbook](https://rust-lang.github.io/mdBook/index.html) (
 </ul>
 </li>
 </ul>
-<h2 id="string-models"><a class="header" href="#string-models">String models</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="string-models"><a class="header" href="#string-models">String models</a></h1>
 <ul>
-<li>
-<p>A <strong>string model</strong> explicitly defines all of the elements in the string with:</p>
+<li>A <strong>string model</strong> explicitly defines all of the elements in the string with:
 <ul>
 <li><strong>indices</strong> (elements in the structure)</li>
 <li><strong>order functions</strong> \(p\) and \(s\)</li>
 <li><strong>properties</strong> of the indices</li>
 </ul>
 </li>
-<li>
-<p>We'll assume a set of (privative) featural properties </p>
-</li>
 </ul>
-<p>(diagram)</p>
+<p><img src="images/string.png" alt="A string model" /></p>
+<ul>
+<li>We'll assume a set of (privative) featural properties </li>
+</ul>
+<p><img src="images/stringfeatures.png" alt="Feature table" /></p>
 <ul>
 <li><strong>Note:</strong> 
 <ul>
@@ -213,7 +214,7 @@ This was written using [mdbook](https://rust-lang.github.io/mdBook/index.html) (
 </ul>
 </li>
 </ul>
-<h2 id="logical-language"><a class="header" href="#logical-language">Logical language</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="logical-language"><a class="header" href="#logical-language">Logical language</a></h1>
 <p>The core of BMRS syntax are expressions of the form </p>
 <p>\[\mathtt{if}~A~\mathtt{then}~B~\mathtt{else}~C\]</p>
 <p>that return boolean values (\(\top\) or \(\bot\))</p>
@@ -221,8 +222,8 @@ This was written using [mdbook](https://rust-lang.github.io/mdBook/index.html) (
 <p>\[
 \mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi}]_i(x)
 \]</p>
-<p>...is \(\top\) iff \(x\) is a voiced obstruent.</p>
-<p>(diagram)</p>
+<p>...is \(\top\) iff \(x\) is a voiced obstruent, as shown below.</p>
+<p><img src="images/voiobs.png" alt="Formula for a voiced obstruent" /></p>
 <p>Furthermore, \(A\), \(B\), or \(C\) can be another expression. 
 Usually this is \(C\), to chain together expressions, as in</p>
 <p>\[
@@ -242,18 +243,25 @@ For example, we can explicitly define what it means to be a voiced obstruent usi
 <p>\[
 \mathrm{D\#}_i(x):=\mathtt{if}~\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x)~\mathtt{then}~\mathrm{final}(x)~\mathtt{else}~\bot
 \]</p>
-<h2 id="interpretations"><a class="header" href="#interpretations">Interpretations</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="interpretations"><a class="header" href="#interpretations">Interpretations</a></h1>
 <p>A map changes input structures to output structures. 
 Another way to think about it is that, under a map, an output structure is some reflection of the input structure.</p>
-<p>(diagram)</p>
+<p><img src="images/map.png" alt="Map" /></p>
 <p><strong>Interpretations</strong> specify maps by defining output structures in terms of the input structures <a href="https://arxiv.org/abs/cs/9906007">(Engelfriet and Hoogeboom, 2001)</a>.</p>
-<p>(diagram)</p>
+<p><img src="images/interp.png" alt="Interpretation" /></p>
 <p>A <strong>scheme</strong> is thus a series of definitions of (output) properties.
-A <strong>boolean monadic recursive scheme</strong> is thus a scheme in which each property in the scheme is <strong>boolean</strong> (i.e., returns a boolean value) and <strong>monadic</strong> (i.e. unary), and the definitions are <strong>recursive</strong> (i.e., the properties being defined can be used in their definitions). </p>
+A <strong>boolean monadic recursive scheme</strong> is thus a scheme in which each property in the scheme is <strong>boolean</strong> (i.e., returns a boolean value) and <strong>monadic</strong> (i.e. unary), and the definitions are <strong>recursive</strong> (i.e., the properties being defined can be used in their own definitions). </p>
 <p>In phonological terms, output formulas assert the conditions under which a segment is \(+\) for a given feature in the output structure.</p>
 <p>Thus, a BMRS for word-final devoicing is as follows:</p>
-<p>(diagrams)</p>
-<h2 id="recursion"><a class="header" href="#recursion">Recursion</a></h2>
+<p>\[
+\begin{array}[t]{ll}
+[\mathrm{son}]_o(x) :=  [\mathrm{son}]_i(x) \\
+[\mathrm{voi}]_o(x) :=  \mathtt{if}~\mathrm{D\#}_i(x)~\mathtt{then}~\bot~\mathrm{else}~[\mathrm{voi}]_i(x)\\
+[\mathrm{cor}]_o(x) :=  [\mathrm{cor}]_i(x) \\
+\end{array}
+\]</p>
+<p>This obtains the truth value table above.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="recursion"><a class="header" href="#recursion">Recursion</a></h1>
 <p>Consider unbounded H-tone spread to penult. </p>
 <p>\[
 \begin{array}[t]{lcl}
@@ -300,7 +308,7 @@ So we preempt this in the case that \(x\) is the final syllable:</p>
 \mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \sigma \\
 \end{array}
 \]</p>
-<h2 id="review"><a class="header" href="#review">Review</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="review"><a class="header" href="#review">Review</a></h1>
 <p>BMRSs are </p>
 <ul>
 <li>logical descriptions of maps</li>

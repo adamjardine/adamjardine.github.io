@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Bibliography - BMRS for Phonological Analysis</title>
+        <title>Logical language - BMRS for Phonological Analysis</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html" class="active"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html" class="active"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,39 +145,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="bibliography"><a class="header" href="#bibliography">Bibliography</a></h1>
-<p>The following are links to some literature for learning more about BMRS.</p>
-<ul>
-<li>
-<p>Bhaskar, S., Chandlee, J., Jardine, A., and Oakden, C. (2020). Boolean monadic recursive schemes as a logical characterization of the subsequential functions. In <em>Language and Automata Theory and Applications - LATA 2020, Lecture Notes in Computer Science</em>, pg. 157–169. Springer.
-[<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]</p>
-</li>
-<li>
-<p>Chandlee, J. and Jardine, A. (2021). Computational universals in linguistic theory: Using recursive programs for phonological analysis. <em>Language 93</em>:485–519.
-[<a href="http://adamjardine.net/files/chandleejardineBMRSms.pdf">pdf</a>;<a href="https://muse.jhu.edu/article/806346">pub link</a>]</p>
-</li>
-<li>
-<p>Jardine, A. and Oakden, C. (to appear). Process-specific constraint effects in BMRS. <em>Linguistic Inquiry</em>.
-[<a href="http://adamjardine.net/files/oakdenjardineBMRSPSC.pdf">pdf</a>]</p>
-</li>
-<li>
-<p>McCollum, A. and Jardine, A. (2022). Input- and output-oriented generalizations in Iny ATR harmony. Rutgers University.
-[<a href="https://ling.auf.net/lingbuzz/006830">lingbuzz</a>]</p>
-</li>
-<li>
-<p>Oakden, C. (2021). <em>Modeling phonological interactions using recursive schemes</em>. PhD thesis, Rutgers University.
-[pdf]</p>
-</li>
-</ul>
+                        <h1 id="logical-language"><a class="header" href="#logical-language">Logical language</a></h1>
+<p>The core of BMRS syntax are expressions of the form </p>
+<p>\[\mathtt{if}~A~\mathtt{then}~B~\mathtt{else}~C\]</p>
+<p>that return boolean values (\(\top\) or \(\bot\))</p>
+<p>For example, </p>
+<p>\[
+\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi}]_i(x)
+\]</p>
+<p>...is \(\top\) iff \(x\) is a voiced obstruent, as shown below.</p>
+<p><img src="images/voiobs.png" alt="Formula for a voiced obstruent" /></p>
+<p>Furthermore, \(A\), \(B\), or \(C\) can be another expression. 
+Usually this is \(C\), to chain together expressions, as in</p>
+<p>\[
+\begin{array}[t]{l}
+\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~\\
+\mathtt{if}~[\mathrm{voi}]_i(x)~\mathtt{then}~\top~\mathtt{else}~\bot
+\end{array}
+\]</p>
+<p>As is perhaps obvious at this point, expressions define <em>properties</em>. 
+For example, we can explicitly define what it means to be a voiced obstruent using the expression above.</p>
+<p>\[\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x):=\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi]_i(x)}\]</p>
+<p>Or what it means to be word-final.</p>
+<p>\[
+\mathrm{final}_i(x):=\mathtt{if}~\ltimes(s(x))~\mathtt{then}~\top~\mathtt{else}~\bot
+\]</p>
+<p>And then what it means to be a word-final obstruent.</p>
+<p>\[
+\mathrm{D\#}_i(x):=\mathtt{if}~\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x)~\mathtt{then}~\mathrm{final}(x)~\mathtt{else}~\bot
+\]</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="questions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="strings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next" href="interp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -185,10 +193,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="questions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="strings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next" href="interp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

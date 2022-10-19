@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
 
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -83,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html" class="active"><strong aria-hidden="true">2.</strong> BMRS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html" class="active"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Iny</div></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,132 +155,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="string-models"><a class="header" href="#string-models">String models</a></h2>
-<ul>
-<li>
-<p>A <strong>string model</strong> explicitly defines all of the elements in the string with:</p>
-<ul>
-<li><strong>indices</strong> (elements in the structure)</li>
-<li><strong>order functions</strong> \(p\) and \(s\)</li>
-<li><strong>properties</strong> of the indices</li>
-</ul>
-</li>
-<li>
-<p>We'll assume a set of (privative) featural properties </p>
-</li>
-</ul>
-<p>(diagram)</p>
-<ul>
-<li><strong>Note:</strong> 
-<ul>
-<li>\(\top\) refers to <strong>true</strong>, \(\bot\) <strong>false</strong></li>
-<li>\(\rtimes\) and \(\ltimes\) represent boundaries (i.e., the equivalent of #)</li>
-</ul>
-</li>
-</ul>
-<h2 id="logical-language"><a class="header" href="#logical-language">Logical language</a></h2>
-<p>The core of BMRS syntax are expressions of the form </p>
-<p>\[\mathtt{if}~A~\mathtt{then}~B~\mathtt{else}~C\]</p>
-<p>that return boolean values (\(\top\) or \(\bot\))</p>
-<p>For example, </p>
-<p>\[
-\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi}]_i(x)
-\]</p>
-<p>...is \(\top\) iff \(x\) is a voiced obstruent.</p>
-<p>(diagram)</p>
-<p>Furthermore, \(A\), \(B\), or \(C\) can be another expression. 
-Usually this is \(C\), to chain together expressions, as in</p>
-<p>\[
-\begin{array}[t]{l}
-\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~\\
-\mathtt{if}~[\mathrm{voi}]_i(x)~\mathtt{then}~\top~\mathtt{else}~\bot
-\end{array}
-\]</p>
-<p>As is perhaps obvious at this point, expressions define <em>properties</em>. 
-For example, we can explicitly define what it means to be a voiced obstruent using the expression above.</p>
-<p>\[\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x):=\mathtt{if}~[\mathrm{son}]_i(x)~\mathtt{then}~\bot~\mathtt{else}~[\mathrm{voi]_i(x)}\]</p>
-<p>Or what it means to be word-final.</p>
-<p>\[
-\mathrm{final}_i(x):=\mathtt{if}~\ltimes(s(x))~\mathtt{then}~\top~\mathtt{else}~\bot
-\]</p>
-<p>And then what it means to be a word-final obstruent.</p>
-<p>\[
-\mathrm{D\#}_i(x):=\mathtt{if}~\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x)~\mathtt{then}~\mathrm{final}(x)~\mathtt{else}~\bot
-\]</p>
-<h2 id="interpretations"><a class="header" href="#interpretations">Interpretations</a></h2>
-<p>A map changes input structures to output structures. 
-Another way to think about it is that, under a map, an output structure is some reflection of the input structure.</p>
-<p>(diagram)</p>
-<p><strong>Interpretations</strong> specify maps by defining output structures in terms of the input structures <a href="https://arxiv.org/abs/cs/9906007">(Engelfriet and Hoogeboom, 2001)</a>.</p>
-<p>(diagram)</p>
-<p>A <strong>scheme</strong> is thus a series of definitions of (output) properties.
-A <strong>boolean monadic recursive scheme</strong> is thus a scheme in which each property in the scheme is <strong>boolean</strong> (i.e., returns a boolean value) and <strong>monadic</strong> (i.e. unary), and the definitions are <strong>recursive</strong> (i.e., the properties being defined can be used in their definitions). </p>
-<p>In phonological terms, output formulas assert the conditions under which a segment is \(+\) for a given feature in the output structure.</p>
-<p>Thus, a BMRS for word-final devoicing is as follows:</p>
-<p>(diagrams)</p>
-<h2 id="recursion"><a class="header" href="#recursion">Recursion</a></h2>
-<p>Consider unbounded H-tone spread to penult. </p>
-<p>\[
-\begin{array}[t]{lcl}
-\acute{\sigma}\sigma\sigma             &amp; \mapsto &amp; \acute{\sigma}\acute{\sigma}\sigma         \\
-\sigma\acute{\sigma}\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
-\sigma\sigma\acute{\sigma}\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
-\sigma\acute{\sigma}\sigma\sigma\sigma\sigma\sigma &amp; \mapsto &amp; \sigma\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\acute{\sigma}\sigma \\
-\mathrm{etc.}
-\end{array}
-\]</p>
-<p>This is an <em>output</em>-oriented process. 
-That is, whether a syllable is H-toned depends on the <em>output</em> tonal value of the preceding syllable.</p>
-<p>Let \(\acute{\sigma}_i(x)\) represent the input contrast between H and non-H syllables, and \(\acute{\sigma}_o(x)\) representing the same in the output,
-we can do this explicitly in BMRS using a <strong>recursive</strong> definition of \(\acute{\sigma}_o(x)\). </p>
-<p>The below is a first approximation, although it is a bit wrong.</p>
-<p>\[
-\acute{\sigma}_o(x):= \mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}~\acute{\sigma}_i(x)
-\]</p>
-<p>This works as shown below:</p>
-<p>\[
-\begin{array}[t]{rccccccc}
-\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
-\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
-\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; ^*\top              \\
-\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} \\
-\end{array}
-\]</p>
-<p>The H tone spreads leftward all the way to the final syllable, as indicated by \(^*\top\). 
-So we preempt this in the case that \(x\) is the final syllable:</p>
-<p>\[
-\acute{\sigma}_o(x):= 
-\begin{array}[t]{l}
-\mathtt{if}~\mathrm{final}(x)~\mathtt{then}~\bot~\mathtt{else}\\
-\mathtt{if}~\acute{\sigma}_o(p(x))~\mathtt{then}~\top~\mathtt{else}\\
-\acute{\sigma}_i(x)
-\end{array}
-\]</p>
-<p>In this way, \(\mathrm{final}(x)\) acts like a higher-ranking constraint, blocking the spread of the H tone only in the final syllable:</p>
-<p>\[
-\begin{array}[t]{rccccccc}
-\mathrm{in:}  &amp;  \sigma  &amp; \acute{\sigma}   &amp; \sigma           &amp; \sigma           &amp; \sigma           &amp; \sigma   \\
-\acute{\sigma}_i(x)     &amp; \bot              &amp; \top                      &amp; \bot                      &amp; \bot                      &amp; \bot                      &amp; \bot              \\
-\acute{\sigma}_o(x)    &amp; \bot              &amp; \top                      &amp; \top                      &amp; \top                      &amp; \top                      &amp; \bot              \\
-\mathrm{out:} &amp;  \sigma &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \acute{\sigma} &amp;  \sigma \\
-\end{array}
-\]</p>
-<h2 id="review"><a class="header" href="#review">Review</a></h2>
-<p>BMRSs are </p>
-<ul>
-<li>logical descriptions of maps</li>
-<li>series of definitions of the form
-\[
-[\mathrm{F}]_o(x) =
-\begin{array}[t]{l}
-\mathtt{if}~\mathrm{(condition 1)}(x)~\mathtt{then}~{\top/\bot}~\mathtt{else}\\
-\mathtt{if}~\mathrm{(condition 2)}(x)~\mathtt{then}~{\top/\bot}~\mathtt{else}\\
-\vdots\\
-[\mathrm{F}]_i(x)
-\end{array}
-\]</li>
-<li>computationally restrictive (Bhaskar et al., 2020; [<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]). </li>
-</ul>
 
                     </main>
 
@@ -289,7 +164,7 @@ So we preempt this in the case that \(x\) is the final syllable:</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="questions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="strings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -303,7 +178,7 @@ So we preempt this in the case that \(x\) is the final syllable:</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="questions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="strings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
