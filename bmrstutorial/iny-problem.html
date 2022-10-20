@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>String models - BMRS for Phonological Analysis: A Tutorial</title>
+        <title>Problem - BMRS for Phonological Analysis: A Tutorial</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html" class="active"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><a href="iny.html"><strong aria-hidden="true">3.</strong> Iny</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="iny-problem.html"><strong aria-hidden="true">3.1.</strong> Problem</a></li><li class="chapter-item expanded "><a href="iny-solution.html"><strong aria-hidden="true">3.2.</strong> Solution</a></li></ol></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><a href="iny.html"><strong aria-hidden="true">3.</strong> Iny</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="iny-problem.html" class="active"><strong aria-hidden="true">3.1.</strong> Problem</a></li><li class="chapter-item expanded "><a href="iny-solution.html"><strong aria-hidden="true">3.2.</strong> Solution</a></li></ol></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,39 +145,64 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="string-models"><a class="header" href="#string-models">String models</a></h1>
+                        <h1 id="the-problem"><a class="header" href="#the-problem">The problem</a></h1>
+<h2 id="background-in-iny"><a class="header" href="#background-in-iny">Background in Iny</a></h2>
+<p>Iny (Ribeiro, 2002 2012) has regressive ATR harmony in which <em>both</em> input <em>and</em> output ATR values of triggers are important.
+The surface vowel inventory is as follows.</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>[+ATR]</td><td>a ã ə̃ (ə) ɔ ɛ ʊ ɨ ɪ</td></tr>
+<tr><td>[-ATR]</td><td>ə o õ e u i̘ i ĩ</td></tr>
+</tbody></table>
+</div>
+<p>The following forms illustrate harmony occuring.</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>/r-ɛ-rɔ=r-e/</td><td>[rerore]</td></tr>
+<tr><td>/b-∅-r-krɔ=kre/</td><td>[bikrokre]</td></tr>
+<tr><td>/r-ɛ-hãɗɛ=r-e/</td><td>[rɛhãɗere]</td></tr>
+</tbody></table>
+</div>
+<p>The following forms harmonize as well, but in a different way. 
+What is the difference? Why?</p>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>/brɔrɛ-dĩ/</td><td>[broreni]</td></tr>
+<tr><td>/wa-θɛ-rit͡ʃɔrɛ/</td><td>[waθerit͡ʃɔrɛ]</td></tr>
+<tr><td>/kɔɗʊ-dĩ/</td><td>[kɔɗuni]</td></tr>
+<tr><td>/r-ɛ-hI=r-e</td><td>[rɛhire]</td></tr>
+</tbody></table>
+</div>
+<p>The following definitions and chart may help you sort things out. 
+Using these analytical categories, think about how high, mid, and low vowels behave with respect to ATR harmony. </p>
 <ul>
-<li>A <strong>string model</strong> explicitly defines all of the elements in the string with:
+<li><strong>Triggers</strong>: for some vowel \(V\) at index \(x\), \(V_x\), if underlying [+ATR] on \(V_x\) results in \(V_{x-1}\) becoming [+ATR], then \(V_x\) triggers [+ATR] harmony.</li>
+<li><strong>Undergoes</strong>: for some vowel \(V\) at index \(y\), \(V_y\), if [+ATR] (underlying or derived) on  \(V_{y+1}\) results in  \(V_y\) becoming [+ATR], then \(V_y\) undergoes [+ATR] harmony.</li>
+<li><strong>Propagates</strong>: for some vowel \(V\) at index \(V_z\), if [+ATR] (underlying or derived) on  \(V_{z+1}\) results in \(V_z\) and \(V_{z-1}\) becoming [+ATR], then \(V_z\) propagates [+ATR].</li>
+</ul>
+<h2 id="analysis"><a class="header" href="#analysis">Analysis</a></h2>
+<p>There are two natural classes we will want to refer to. 
+Let's define those first. </p>
 <ul>
-<li><strong>indices</strong> (elements in the structure)</li>
-<li><strong>order functions</strong> \(p\) and \(s\)</li>
-<li><strong>properties</strong> of the indices</li>
+<li>\([+\mathrm{ATR},+\mathrm{hi}]_i(x)=\)</li>
+<li>\([+\mathrm{ATR},-\mathrm{hi},-\mathrm{lo},-\mathrm{nas}]_o(x)=\)</li>
 </ul>
-</li>
-</ul>
-<p><img src="images/string.png" alt="A string model" /></p>
-<ul>
-<li>We'll assume a set of (privative) featural properties </li>
-</ul>
-<p><img src="images/stringfeatures.png" alt="Feature table" /></p>
-<ul>
-<li><strong>Note:</strong> 
-<ul>
-<li>\(\top\) refers to <strong>true</strong>, \(\bot\) <strong>false</strong></li>
-<li>\(\rtimes\) and \(\ltimes\) represent boundaries (i.e., the equivalent of #)</li>
-</ul>
-</li>
-</ul>
+<p>Now we can define a BMRS for Iny. 
+Assume the following output features.
+<strong>Hint:</strong> How are you going to capture the directionality?</p>
+<ol>
+<li>\([\mathrm{high}]_o(x)=\)</li>
+<li>\([\mathrm{low}]_o(x)=\)</li>
+<li>\([\mathrm{nasal}]_o(x)=\)</li>
+<li>\([\mathrm{ATR}]_o(x)=\)</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="bmrs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="iny.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="language.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="iny-solution.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -187,11 +212,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="bmrs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="iny.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="language.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="iny-solution.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
