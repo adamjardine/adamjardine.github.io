@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><a href="iny.html"><strong aria-hidden="true">3.</strong> Iny</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="iny-problem.html"><strong aria-hidden="true">3.1.</strong> Problem</a></li><li class="chapter-item expanded "><a href="iny-solution.html"><strong aria-hidden="true">3.2.</strong> Solution</a></li></ol></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="bmrs.html"><strong aria-hidden="true">2.</strong> BMRS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strings.html"><strong aria-hidden="true">2.1.</strong> String models</a></li><li class="chapter-item expanded "><a href="language.html"><strong aria-hidden="true">2.2.</strong> Logical language</a></li><li class="chapter-item expanded "><a href="interp.html"><strong aria-hidden="true">2.3.</strong> Interpretations</a></li><li class="chapter-item expanded "><a href="recursion.html"><strong aria-hidden="true">2.4.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="review.html"><strong aria-hidden="true">2.5.</strong> Review</a></li></ol></li><li class="chapter-item expanded "><a href="iny.html"><strong aria-hidden="true">3.</strong> Iny</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="iny-problem.html"><strong aria-hidden="true">3.1.</strong> Problem</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Solution</div></li></ol></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">4.</strong> Open Questions</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -183,11 +183,22 @@ This was written using [mdbook](https://rust-lang.github.io/mdBook/index.html) (
 -->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="boolean-monadic-recursive-schemes-bmrs"><a class="header" href="#boolean-monadic-recursive-schemes-bmrs">Boolean Monadic Recursive Schemes (BMRS)</a></h1>
 <ul>
-<li>A logical characterization of a phonological process includes:
+<li>
+<p>A logical characterization of a phonological process includes:</p>
 <ul>
 <li><strong>Models</strong> (representations) that specify the set of elements in a structure, the properties of those elements, and relations between elements;</li>
 <li>A <strong>logical language</strong> for making statements about elements in the structure; and</li>
 <li>an <strong>interpretation</strong> which defines a function by specifying the elements, properties, and relations in the output structure in terms of logical statements about the input structure.</li>
+</ul>
+</li>
+<li>
+<p>Pages in this section:</p>
+<ul>
+<li><a href="./strings.html">String models</a></li>
+<li><a href="./language.html">Logical language</a></li>
+<li><a href="./interp.html">Interpretations</a></li>
+<li><a href="./recursion.html">A recursion example</a></li>
+<li><a href="./review.html">A quick review</a></li>
 </ul>
 </li>
 </ul>
@@ -239,7 +250,7 @@ For example, we can explicitly define what it means to be a voiced obstruent usi
 <p>\[
 \mathrm{final}_i(x):=\mathtt{if}~\ltimes(s(x))~\mathtt{then}~\top~\mathtt{else}~\bot
 \]</p>
-<p>And then what it means to be a word-final obstruent.</p>
+<p>And then what it means to be a word-final voiced obstruent.</p>
 <p>\[
 \mathrm{D\#}_i(x):=\mathtt{if}~\left[\begin{array}{l}-\mathrm{son}\\+\mathrm{voi}\end{array}\right]_i(x)~\mathtt{then}~\mathrm{final}(x)~\mathtt{else}~\bot
 \]</p>
@@ -325,6 +336,11 @@ So we preempt this in the case that \(x\) is the final syllable:</p>
 <li>computationally restrictive (Bhaskar et al., 2020; [<a href="http://adamjardine.net/files/bhaskaretalBMRSms.pdf">pdf</a>;<a href="https://www.springer.com/gp/book/9783030406073">pub link</a>]). </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iny"><a class="header" href="#iny">Iny</a></h1>
+<p>Pages in this section:</p>
+<ul>
+<li><a href="iny-problem.html">Statement of the problem</a></li>
+<li>The solution (To be posted later)</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-problem"><a class="header" href="#the-problem">The problem</a></h1>
 <h2 id="background-in-iny"><a class="header" href="#background-in-iny">Background in Iny</a></h2>
 <p>Iny (Ribeiro, 2002 2012) has regressive ATR harmony in which <em>both</em> input <em>and</em> output ATR values of triggers are important.
@@ -373,23 +389,10 @@ Assume the following output features.
 <li>\([\mathrm{nasal}]_o(x)=\)</li>
 <li>\([\mathrm{ATR}]_o(x)=\)</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="solution"><a class="header" href="#solution">Solution</a></h1>
-<ol>
-<li>\([\mathrm{high}]_o(x)=[\mathrm{high}]_o(x)\)</li>
-<li>\([\mathrm{low}]_o(x)=[\mathrm{low}]_o(x)\)</li>
-<li>\([\mathrm{nasal}]_o(x)=[\mathrm{nasal}]_o(x)\)</li>
-<li>\([\mathrm{ATR}]_o(x)=
-\begin{array}[t]{l}
-\mathtt{if}~[\mathrm{low}]_i(x)~\mathtt{then}~\top~\mathtt{else}\\
-\mathtt{if}~[+\mathrm{ATR},+\mathrm{hi}]_i(s(x))~\mathtt{then}~\top~\mathtt{else}\\
-\mathtt{if}~[+\mathrm{ATR},-\mathrm{hi},-\mathrm{lo},-\mathrm{nas}]_o(s(x))~\mathtt{then}~\top~\mathtt{else}\\
-[\mathtt{ATR}]_i(x)
-\end{array}
-\)</li>
-</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="open-questions"><a class="header" href="#open-questions">Open Questions</a></h1>
 <p>The following would be great BMRS-related projects for submitting to AMP 2023.</p>
 <ol>
+<li>What restrictions should we put on BMRS for defining natural classes?</li>
 <li>What does a tertiary feature system look like in BMRS? (Turkish voicing alternations)</li>
 <li>BMRS captures elsewhere condition-type effects well. What about non-derived environment blocking? </li>
 <li>What is the status of intermediate representations in BMRS? (Adam M. adds Arapahoe citation)</li>
