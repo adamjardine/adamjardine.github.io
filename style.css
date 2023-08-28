@@ -101,6 +101,47 @@ hr.footer {
     margin-top: 5%;
 }
 
+.yeargroup:before,
+.yeargroup:after{
+    content: "";
+    display: table;
+}
+
+.yeargroup:after{
+    clear: both;
+}
+
+.yeargroup{
+    padding:0pt;
+    width: 85%;
+    margin:0pt;
+}
+
+.year {
+    display:inline-block;
+    float:left;
+    width: 3%;
+    padding:0pt;
+    padding-top:3pt;
+    margin:0pt;
+}
+
+.works {
+    list-style-type: none;
+    padding:0px;
+    margin:0px;
+    margin-bottom:10px;
+    display:inline-block;
+    float: right;
+    width: 96%;
+}
+
+.works li{
+    margin-bottom:7px;
+}
+
+
+
 table {
   border-spacing: 0px;
   padding: 0px 4px 0px 0px; /* top right bottom left */
