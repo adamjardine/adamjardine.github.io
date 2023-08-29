@@ -113,8 +113,9 @@ hr.footer {
 
 .yeargroup{
     padding:0pt;
-    width: 85%;
+    width: 95%;
     margin:0pt;
+    overflow:hidden;
 }
 
 .year {
@@ -130,7 +131,6 @@ hr.footer {
     list-style-type: none;
     padding:0px;
     margin:0px;
-    margin-bottom:10px;
     display:inline-block;
     float: right;
     width: 96%;
